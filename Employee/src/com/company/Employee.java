@@ -33,7 +33,45 @@ public class Employee {
     this.position = position;
   }
 
+  public String toString(){
+    return "Employee info: " + this.firstName + " " + this.lastName + " " + this.position.toString();
+  }
 
+  public boolean equals(Object obj){
 
+    return obj instanceof Employee
+           && ((Employee) obj).firstName.equals( this.firstName )
+           && ((Employee) obj).lastName.equals( this.lastName );
+  }
+
+  public void work(){
+    for (int i = 0; i < 10; i ++ ){
+         System.out.println( firstName + " " + lastName + " works: " + i );
+         try {
+           Thread.sleep(500);
+         } catch (InterruptedException e) {
+           e.printStackTrace();
+         }
+    }
+  }
+
+  public int compute(){
+
+    if ( firstName.equals("Ivan") && lastName.equals("Ivanov") )
+         throw new RuntimeException("asdda");
+
+    // 1 * 2 * 3 * 4 * ... * 19
+    int result = 1;
+    for ( int i = 1; i < 20; i ++ ){
+          result = result * i;
+      try {
+        Thread.sleep(500);
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    }
+
+    return result;
+  }
 
 }
